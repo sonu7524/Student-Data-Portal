@@ -53,10 +53,10 @@ sortBtn3.addEventListener('click', () => {
         const nameA = a.marks;
         const nameB = b.marks;
         if (nameA > nameB) {
-          return -1;
+          return 1;
         }
         if (nameA < nameB) {
-          return 1;
+          return -1;
         }
         return 0;
       });
@@ -89,10 +89,10 @@ sortBtn5.addEventListener('click', () => {
         const nameA = a.class;
         const nameB = b.class;
         if (nameA > nameB) {
-          return -1;
+          return 1;
         }
         if (nameA < nameB) {
-          return 1;
+          return -1;
         }
         return 0;
       });
@@ -107,7 +107,14 @@ sortBtn6.addEventListener('click', () => {
   fetch('./data/MOCK_DATA.json')
     .then(response => response.json())
     .then(data => {
-      const sortedData = data.sort((a, b) => {
+
+      // this will divide data only on two genders Male Or Female
+      const newData = data.filter((a)=>{
+        return a.gender === 'Male' || a.gender === 'Female';
+      })
+
+      //sort these two accordingly
+      const sortedData = newData.sort((a, b) => {
         let genderA = a.gender.toUpperCase(); // ignore upper and lowercase
         let genderB = b.gender.toUpperCase(); // ignore upper and lowercase
   
@@ -119,7 +126,8 @@ sortBtn6.addEventListener('click', () => {
           return -1;
         } else if (genderA !== 'FEMALE' && genderB === 'FEMALE') {
           return 1;
-        } else if (genderA === 'AGENDER' && genderB !== 'AGENDER') {
+        } 
+        /*else if (genderA === 'AGENDER' && genderB !== 'AGENDER') {
           return -1;
         } else if (genderA !== 'AGENDER' && genderB === 'AGENDER') {
           return 1;
@@ -139,7 +147,8 @@ sortBtn6.addEventListener('click', () => {
           return -1;
         } else if (genderA !== 'BIGENDER' && genderB === 'BIGENDER') {
           return 1;
-        } else {
+        }*/ 
+        else {
           return 0;
         }
       });

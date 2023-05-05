@@ -63,6 +63,10 @@ function populateTable(data) {
       const email = document.createElement('td');
       email.textContent = row.email;
       tr.appendChild(email);
+
+      const city = document.createElement('td');
+      city.textContent = row.city;
+      tr.appendChild(city);
       
       tableBody.appendChild(tr);
     });
