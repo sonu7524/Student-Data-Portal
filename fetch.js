@@ -79,7 +79,7 @@ function populateTable(data) {
     }
     else {
       const row = document.createElement('tr');
-      row.innerHTML = '<td colspan="8">No data found</td>';
+      row.innerHTML = '<td colspan="8">NO DATA FOUND</td>';
       tableBody.appendChild(row);
     }
   };
