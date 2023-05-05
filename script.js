@@ -1,3 +1,28 @@
+//Search Bar
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-button');
+
+searchButton.addEventListener('click', () => {
+  const searchString = searchInput.value.trim().toLowerCase();
+  
+  fetch('./data/MOCK_DATA.json')
+      .then(response => response.json())
+      .then(data => {
+        const result = data.filter((d)=>{
+          const fullName = `${d.first_name} ${d.last_name}`;
+          return d.first_name.toLowerCase().includes(searchString) ||
+           d.last_name.toLowerCase().includes(searchString) ||
+            d.email.toLowerCase().includes(searchString) ||
+            fullName.toLowerCase() === searchString;
+        });
+        populateTable(result);
+      })
+      .catch(error => console.error(error));
+  });
+
+
+
+
 
 //sort A-Z
 const sortBtn1 = document.getElementById('sort-btn-a-z');
@@ -112,12 +137,13 @@ sortBtn6.addEventListener('click', () => {
       const newData = data.filter((a)=>{
         return a.gender === 'Male' || a.gender === 'Female';
       })
-
+      
       //sort these two accordingly
       const sortedData = newData.sort((a, b) => {
         let genderA = a.gender.toUpperCase(); // ignore upper and lowercase
         let genderB = b.gender.toUpperCase(); // ignore upper and lowercase
-  
+
+        
         if (genderA === 'MALE' && genderB !== 'MALE') {
           return -1;
         } else if (genderA !== 'MALE' && genderB === 'MALE') {
@@ -127,7 +153,8 @@ sortBtn6.addEventListener('click', () => {
         } else if (genderA !== 'FEMALE' && genderB === 'FEMALE') {
           return 1;
         } 
-        /*else if (genderA === 'AGENDER' && genderB !== 'AGENDER') {
+        /*
+        else if (genderA === 'AGENDER' && genderB !== 'AGENDER') {
           return -1;
         } else if (genderA !== 'AGENDER' && genderB === 'AGENDER') {
           return 1;
@@ -147,7 +174,7 @@ sortBtn6.addEventListener('click', () => {
           return -1;
         } else if (genderA !== 'BIGENDER' && genderB === 'BIGENDER') {
           return 1;
-        }*/ 
+        }*/
         else {
           return 0;
         }
