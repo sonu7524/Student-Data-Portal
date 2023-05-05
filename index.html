@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <p>Student Portal</p>
+        </nav>
+    </header>
+    <section class="main-container">
+        <div class="search-container">
+            <input class="search-input" placeholder="Search">
+            <button class="btn">Search</button>
+        </div>
+        <div class="search-category">
+            <button class="btn" id="sort-btn-a-z">Sort A-Z</button>
+            <button class="btn" id="sort-btn-z-a">Sort Z-A</button>
+            <button class="btn" id="sort-btn-marks">Sort By Marks</button>
+            <button class="btn" id="sort-btn-passing">Sort By Passing</button>
+            <button class="btn" id="sort-btn-class">Sort By Class</button>
+            <button class="btn" id="sort-btn-gender">Sort By Gender</button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Gender</td>
+                    <td>Class</td>
+                    <td>Marks</td>
+                    <td>Passing</td>
+                    <td>Email</td>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+        
+    </section>
+    <script src="./data/MOCK_DATA.json"></script>
+    <script src="./fetch.js"></script>
+    <script src="./script.js"></script>
+
+</body>
+</html>
